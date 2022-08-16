@@ -1,0 +1,72 @@
+.nav {
+  background-color: #f5f3f3;
+  color: #2e2e2e;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 65px;
+}
+
+.nav_logo {
+  display: flex;
+  align-items: center;
+  flex: 0.3;
+}
+
+.nav_logo > img {
+  width: 32px;
+  height: auto;
+  object-fit: contain;
+}
+.nav_logo > div {
+  display: flex;
+  flex-direction: column;
+  margin-left: 6px;
+  font-family: "lora";
+  line-height: 13px;
+  margin-top: 8px;
+}
+.nav_logo > div > p:nth-child(1) {
+  font-size: 17px;
+  font-weight: 600;
+}
+.nav_logo > div > p:nth-child(2) {
+  font-size: 11px;
+}
+
+.nav_contant {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0.7;
+}
+.nav_contant > ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0.8;
+  font-family: "lora";
+  font-weight: 300;
+}
+.nav_contant > ul > li {
+  cursor: pointer;
+}
+.nav_contant > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0.1;
+}
+.nav_contant > div > svg {
+  font-size: 20px;
+  color: #2e2e2e;
+  cursor: pointer;
+}
+.nav_avatar {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  cursor: pointer;
+}
