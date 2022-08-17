@@ -1,0 +1,75 @@
+.landPage {
+  display: flex;
+  padding: 0px 65px;
+  margin-top: 35px;
+}
+
+.landPage_left {
+  display: flex;
+  flex-direction: column;
+  flex: 0.5;
+}
+
+.landPage_left > h1 {
+  font-size: 85px;
+  font-family: "Poppins";
+  font-weight: 600;
+  color: #2e2e2e;
+}
+.landPage_left > h1 > span {
+  color: #ea580c;
+}
+.landPage_left > p {
+  font-size: 14px;
+  color: #5e5e5e;
+  font-family: "Lora";
+  margin-top: 12px;
+}
+.landPage_left > button {
+  background-color: #fa7d22;
+  font-size: 15px;
+  font-family: "Lora";
+  font-weight: 600;
+  border: 1px solid lightgray;
+  border-radius: 50px;
+  width: 130px;
+  padding: 11px 13px;
+  margin-top: 20px;
+  color: #e9e7e7;
+  cursor: pointer;
+  transition: all 0.5s ease-in;
+}
+.landPage_left > button:hover {
+  background-color: transparent;
+  color: #2e2e2e;
+  border-color: #2e2e2e;
+}
+.landpage_fastDelivery {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 4px 15px;
+  width: 140px;
+  font-family: "Lora";
+  font-size: 15px;
+  background-color: #feecd4;
+  border-radius: 50px;
+}
+.landpage_fastDelivery > p {
+  font-weight: 600;
+  color: #f97316;
+}
+.landpage_fastDelivery > div {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  box-shadow: -1px 2px 6px 0px rgb(180, 179, 179);
+}
+
+.landpage_fastDelivery > div > img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
