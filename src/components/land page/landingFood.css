@@ -1,0 +1,18 @@
+.LandingFood {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: 38px;
+  box-shadow: -2px 4px 19px 1px rgb(165, 165, 165);
+  backdrop-filter: blur(12px);
+  background-color: hsla(0, 0%, 100%, 0.4);
+  filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04))
+    drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
+}
+
+.LandingFood > img {
+  width: 170px;
+  object-fit: contain;
+}

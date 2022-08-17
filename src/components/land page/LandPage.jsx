@@ -1,4 +1,5 @@
 import React from "react";
+import LandingFood from "./LandingFood";
 import "./landPage.css";
 
 export default function LandPage() {
@@ -23,7 +24,15 @@ export default function LandPage() {
         </p>
         <button>Order now</button>
       </div>
-      <div></div>
+      <div className="landPage_right">
+        <img src="/assets/mainBackground.png" alt="background"></img>
+        <LandingFood
+          imgUrl={"/assets/food/iceCream.png"}
+          title={"Icecream"}
+          descrption={"Chocolate & vanilla"}
+          price={"3 JD"}
+        ></LandingFood>
+      </div>
     </div>
   );
 }
