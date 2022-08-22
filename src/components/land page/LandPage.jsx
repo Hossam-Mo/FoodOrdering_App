@@ -30,7 +30,25 @@ export default function LandPage() {
           imgUrl={"/assets/food/iceCream.png"}
           title={"Icecream"}
           descrption={"Chocolate & vanilla"}
-          price={"3 JD"}
+          price={"3.50"}
+        ></LandingFood>
+        <LandingFood
+          imgUrl={"/assets/food/ChickenBet.png"}
+          title={"Chicken Bet"}
+          descrption={"Chicken Bet plate"}
+          price={"4.25"}
+        ></LandingFood>
+        <LandingFood
+          imgUrl={"/assets/food/manjoorion.png"}
+          title={"Manjoorion"}
+          descrption={"Manjoorion plate"}
+          price={"2.75"}
+        ></LandingFood>
+        <LandingFood
+          imgUrl={"/assets/food/chickenkebab.png"}
+          title={"Chicken Kebab"}
+          descrption={"Mixed Kebab plate"}
+          price={"3"}
         ></LandingFood>
       </div>
     </div>

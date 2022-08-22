@@ -6,9 +6,13 @@ export default function LandingFood({ imgUrl, title, descrption, price }) {
     <div className="LandingFood">
       <img src={imgUrl} alt={title} />
 
-      <h1>{title}</h1>
-      <h2>{descrption}</h2>
-      <p>{price}</p>
+      <div className="LandingFood_contants">
+        <h1>{title}</h1>
+        <h2>{descrption}</h2>
+        <p>
+          {price} <span className="landingFood_span">JD</span>
+        </p>
+      </div>
     </div>
   );
 }

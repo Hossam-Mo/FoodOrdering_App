@@ -1,5 +1,6 @@
 .landPage {
   display: flex;
+  justify-content: space-between;
   padding: 0px 65px;
   margin-top: 35px;
 }
@@ -71,5 +72,22 @@
 .landpage_fastDelivery > div > img {
   width: 32px;
   height: 32px;
+  object-fit: contain;
+}
+.landPage_right {
+  position: relative;
+  flex: 0.4 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.landPage_right > img {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: auto;
   object-fit: contain;
 }
