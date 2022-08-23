@@ -1,4 +1,5 @@
 import React from "react";
+import HedersLabels from "../heders labels/HedersLabels";
 import LandingFood from "./LandingFood";
 import "./landPage.css";
 
@@ -48,7 +49,7 @@ export default function LandPage() {
           imgUrl={"/assets/food/chickenkebab.png"}
           title={"Chicken Kebab"}
           descrption={"Mixed Kebab plate"}
-          price={"3"}
+          price={"5.00"}
         ></LandingFood>
       </div>
     </div>

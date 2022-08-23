@@ -1,12 +1,12 @@
 import "./App.css";
-import LandPage from "./components/land page/LandPage";
+import Main from "./components/main/Main";
 import Nav from "./components/nav/Nav";
 
 function App() {
   return (
     <div className="App">
       <Nav></Nav>
-      <LandPage></LandPage>
+      <Main></Main>
     </div>
   );
 }
