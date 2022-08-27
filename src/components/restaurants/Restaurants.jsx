@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 import "./restaurants.css";
 import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
 import HedersLabels from "../heders labels/HedersLabels";
+import { useDispatch } from "react-redux";
+import { get_restaurantsList } from "../../redux/actionTypes";
 
 export default function Restaurants() {
   const [restaurantsList, setRestaurantsList] = useState([
@@ -17,6 +19,7 @@ export default function Restaurants() {
     { name: "KFC", imgUrl: "/assets/restaurants/KFC.png" },
     { name: "KFC", imgUrl: "/assets/restaurants/KFC.png" },
   ]);
+  const dispatch = useDispatch();
 
   const ref = useRef(null);
 
@@ -28,6 +31,13 @@ export default function Restaurants() {
     if (ref.current.scrollLeft > 484) {
       ref.current.scrollTo(0, 0);
     }
+  };
+
+  const ShowList = (restaurant) => {
+    dispatch({
+      type: get_restaurantsList,
+      restaurant: restaurant,
+    });
   };
   return (
     <div className="Restaurants">
@@ -44,7 +54,16 @@ export default function Restaurants() {
       </div>
       <div ref={ref} className="restaurants_contants" onScroll={scrollLoop}>
         {restaurantsList.map((rest, ind) => {
-          return <img key={ind} src={rest.imgUrl} alt={rest.name} />;
+          return (
+            <img
+              key={ind}
+              src={rest.imgUrl}
+              alt={rest.name}
+              onClick={() => {
+                ShowList(rest);
+              }}
+            />
+          );
         })}
       </div>
     </div>
