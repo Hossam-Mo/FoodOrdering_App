@@ -1,0 +1,85 @@
+.foodCard {
+  height: 175px;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  margin: 48px 0;
+  background-color: hsla(0, 0%, 100%, 0.4);
+  backdrop-filter: blur(16px);
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
+  margin-right: 20px;
+}
+.foodCard:hover {
+  background-color: #f0efef;
+}
+.foodCard_img {
+  filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.25));
+}
+.foodCard_img > img {
+  height: 160px;
+  width: 160px;
+  object-fit: contain;
+  margin-top: -100px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+.foodCard_img > img:hover {
+  transform: scale(1.2);
+}
+.foodCard_content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 67%;
+}
+
+.foodCard_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 200px;
+  width: 32px;
+  height: 32px;
+  background-color: #dc2626;
+  display: flex;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.foodCard_button:hover {
+  transform: scale(1.2);
+}
+.foodCard_button:active {
+  transform: scale(0.7);
+}
+.foodCard_button > svg {
+  font-size: 16px;
+}
+.foodCard_info {
+  font-family: "lora";
+  line-height: 1.5;
+}
+.foodCard_info > h2 {
+  color: #5b5b5b;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.foodCard_info > p {
+  color: #747a87;
+  font-weight: 300;
+  font-size: 12px;
+}
+.foodCard_info > h3 {
+  color: #5b5b5b;
+  font-weight: 700;
+  font-size: 15px;
+}
+.foodCard_info > h3 > span {
+  color: #ef5e5e;
+}

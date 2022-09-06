@@ -1,14 +1,12 @@
-.Restaurants {
-}
-.resturants_title {
+.menuRow_title {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.resturants_buttons {
+.menuRow_buttons {
   display: flex;
 }
-.resturants_buttons > button {
+.menuRow_buttons > button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,37 +19,29 @@
   transition: all 0.4s ease-in-out;
   outline: none;
 }
-.resturants_buttons > button:hover {
+.menuRow_buttons > button:hover {
   background-color: #f8952b;
   transform: scale(1.1);
 }
-.resturants_buttons > button:active {
+.menuRow_buttons > button:active {
   background-color: #f8952b;
   transform: scale(0.7);
 }
-.resturants_buttons > button > svg {
+.menuRow_buttons > button > svg {
   color: #f5f3f3;
   font-size: 19px;
 }
 
-.restaurants_contants {
+.menuRow_cards {
   display: flex;
   align-items: center;
-  justify-content: center;
-  overflow-y: scroll;
-  max-width: 900px;
-  margin: auto;
+  width: 100%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  scroll-behavior: smooth;
 }
 
-.restaurants_contants::-webkit-scrollbar {
+.menuRow_cards::-webkit-scrollbar {
   display: none;
-}
-
-.restaurants_contants > img {
-  width: 170px;
-  height: auto;
-  object-fit: contain;
 }

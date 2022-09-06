@@ -18,6 +18,8 @@ export default function Restaurants() {
     { name: "KFC", imgUrl: "/assets/restaurants/KFC.png" },
     { name: "KFC", imgUrl: "/assets/restaurants/KFC.png" },
     { name: "KFC", imgUrl: "/assets/restaurants/KFC.png" },
+    { name: "KFC", imgUrl: "/assets/restaurants/KFC.png" },
+    { name: "KFC", imgUrl: "/assets/restaurants/KFC.png" },
   ]);
   const dispatch = useDispatch();
 
@@ -27,7 +29,6 @@ export default function Restaurants() {
     ref.current.scrollLeft += scrollOffset;
   };
   const scrollLoop = () => {
-    console.log(ref.current.scrollLeft);
     if (ref.current.scrollLeft > 484) {
       ref.current.scrollTo(0, 0);
     }
