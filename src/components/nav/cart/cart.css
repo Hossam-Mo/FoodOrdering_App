@@ -1,0 +1,73 @@
+.cart {
+  height: 100vh;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: width 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.cartOpen {
+  opacity: 1;
+  pointer-events: all;
+  width: 375px;
+}
+
+.cartClosed {
+  opacity: 0;
+  pointer-events: none;
+  width: 0px;
+}
+.CartClosed_empty {
+  font-size: 0 !important;
+}
+
+.cart_title {
+  padding: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cart_title > svg {
+  font-size: 25px;
+  color: #515151;
+  cursor: pointer;
+}
+.cart_title > h1 {
+  color: #515151;
+  font-size: 20px;
+  font-family: "lora";
+}
+.cart_title > button {
+  padding: 5px 10px;
+  border: 1px solid black;
+  font-family: "lora";
+  border-radius: 50px;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+.cart_title > button > svg {
+  margin-left: 5px;
+}
+
+.cart_content {
+  padding: 20px;
+  height: calc(100% - 116.4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 25px;
+  font-family: "Lora";
+  color: #515151;
+}
+.cart_content > img {
+  width: 90%;
+}
+.cart_content > h2 {
+  font-size: 20px;
+  transition: all 1s ease;
+}

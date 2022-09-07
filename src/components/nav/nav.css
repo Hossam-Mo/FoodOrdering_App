@@ -2,10 +2,14 @@
   background-color: #f5f3f3;
   color: #2e2e2e;
   height: 40px;
+  width: calc(100% - 130px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 22px 65px;
+  position: fixed;
+  top: 0;
+  z-index: 999999;
 }
 
 .nav_logo {

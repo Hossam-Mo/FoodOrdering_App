@@ -71,7 +71,7 @@ export default function Menu() {
   return (
     <div className="menu">
       <div className="menu_restaurant">
-        <img src={restaurant.imgUrl} alt={restaurant.name}></img>
+        <img src={restaurant?.imgUrl} alt={restaurant?.name}></img>
       </div>
       <MenuRow title={"Drinks"} list={list}></MenuRow>
     </div>

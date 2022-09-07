@@ -1,8 +1,11 @@
 import React from "react";
 import "./nav.css";
 import { IoMdBasket } from "react-icons/io";
+import Cart from "./cart/Cart";
+import { useState } from "react";
 
 export default function Nav() {
+  const [cartOpener, setCartOpener] = useState(false);
   return (
     <nav className="nav">
       <div className="nav_logo">
@@ -20,7 +23,11 @@ export default function Nav() {
           <li>Service</li>
         </ul>
         <div>
-          <IoMdBasket></IoMdBasket>
+          <IoMdBasket
+            onClick={() => {
+              setCartOpener(true);
+            }}
+          ></IoMdBasket>
           <img
             className="nav_avatar"
             src="/assets/userAvatar.png"
@@ -28,6 +35,7 @@ export default function Nav() {
           />
         </div>
       </div>
+      <Cart open={cartOpener} setOpen={setCartOpener}></Cart>
     </nav>
   );
 }
