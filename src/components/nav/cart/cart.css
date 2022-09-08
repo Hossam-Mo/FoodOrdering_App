@@ -52,10 +52,13 @@
 .cart_title > button > svg {
   margin-left: 5px;
 }
-
 .cart_content {
+  height: calc(100% - 96.4px);
+}
+
+.cart_contentEmpty {
   padding: 20px;
-  height: calc(100% - 116.4px);
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,10 +67,10 @@
   font-family: "Lora";
   color: #515151;
 }
-.cart_content > img {
+.cart_contentEmpty > img {
   width: 90%;
 }
-.cart_content > h2 {
+.cart_contentEmpty > h2 {
   font-size: 20px;
   transition: all 1s ease;
 }
