@@ -3,9 +3,12 @@ import "./nav.css";
 import { IoMdBasket } from "react-icons/io";
 import Cart from "./cart/Cart";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function Nav() {
   const [cartOpener, setCartOpener] = useState(false);
+  const cartList = useSelector((state) => state.addToCart);
+
   return (
     <nav className="nav">
       <div className="nav_logo">
@@ -23,11 +26,16 @@ export default function Nav() {
           <li>Service</li>
         </ul>
         <div>
-          <IoMdBasket
+          <div
+            className="nav_Icon"
             onClick={() => {
               setCartOpener(true);
             }}
-          ></IoMdBasket>
+          >
+            {cartList.length > 0 && <div>{cartList.length}</div>}
+            <IoMdBasket></IoMdBasket>
+          </div>
+
           <img
             className="nav_avatar"
             src="/assets/userAvatar.png"
@@ -35,7 +43,11 @@ export default function Nav() {
           />
         </div>
       </div>
-      <Cart open={cartOpener} setOpen={setCartOpener}></Cart>
+      <Cart
+        open={cartOpener}
+        setOpen={setCartOpener}
+        cartList={cartList}
+      ></Cart>
     </nav>
   );
 }

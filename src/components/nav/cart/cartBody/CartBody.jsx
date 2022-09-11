@@ -1,83 +1,62 @@
 import React from "react";
-import { useState } from "react";
+import { useDispatch } from "react-redux";
+import {
+  cart_itemDelete,
+  decrease_cart_count,
+  increase_cart_count,
+} from "../../../../redux/actionTypes";
 import "./cartBody.css";
 
-export default function CartBody() {
-  const [item, setItem] = useState([
-    {
-      img: "/assets/food/iceCream.png",
-      title: "Ice Cream",
-      price: "3.50",
-    },
-    {
-      img: "/assets/food/iceCream.png",
-      title: "Ice Cream",
-      price: "3.50",
-    },
-    {
-      img: "/assets/food/iceCream.png",
-      title: "Ice Cream",
-      price: "3.50",
-    },
-    {
-      img: "/assets/food/iceCream.png",
-      title: "Ice Cream",
-      price: "3.50",
-    },
-    {
-      img: "/assets/food/iceCream.png",
-      title: "Ice Cream",
-      price: "3.50",
-    },
-    {
-      img: "/assets/food/iceCream.png",
-      title: "Ice Cream",
-      price: "3.50",
-    },
-    {
-      img: "/assets/food/iceCream.png",
-      title: "Ice Cream",
-      price: "3.50",
-    },
-    {
-      img: "/assets/food/iceCream.png",
-      title: "Ice Cream",
-      price: "3.50",
-    },
-    {
-      img: "/assets/food/iceCream.png",
-      title: "Ice Cream",
-      price: "3.50",
-    },
-    {
-      img: "/assets/food/iceCream.png",
-      title: "Ice Cream",
-      price: "3.50",
-    },
-    {
-      img: "/assets/food/iceCream.png",
-      title: "Ice Cream",
-      price: "3.50",
-    },
-  ]);
+export default function CartBody({ list }) {
+  const dispatch = useDispatch();
+
+  const increseItemCount = (id) => {
+    dispatch({
+      type: increase_cart_count.type,
+      id,
+    });
+  };
+  const DecreseItemCount = (id, count) => {
+    count === 1
+      ? dispatch({
+          type: cart_itemDelete.type,
+          id,
+        })
+      : dispatch({
+          type: decrease_cart_count.type,
+          id,
+        });
+  };
 
   return (
     <div className="cartBody">
       <div className="cartBody_content">
-        {item.map((it, ind) => {
+        {list?.map((it, ind) => {
           return (
-            <div className="cartBody_item">
+            <div key={ind} className="cartBody_item">
               <div className="cartBody_info">
-                <img src={it.img} alt={it.title}></img>
+                <img src={it.img} alt={it.name}></img>
                 <div>
-                  <h3>{it.title}</h3>
+                  <h3>{it.name}</h3>
                   <p>{it.price} JD</p>
                 </div>
               </div>
               <div className="cartBody_counter">
-                <button>-</button>
-                <p>1</p>
-                <button>+</button>
+                <button
+                  onClick={() => {
+                    DecreseItemCount(it.id, it.count);
+                  }}
+                >
+                  -
+                </button>
+                <p>{it.count}</p>
+                <button
+                  onClick={() => {
+                    increseItemCount(it.id);
+                  }}
+                >
+                  +
+                </button>
               </div>
             </div>
           );

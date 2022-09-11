@@ -4,7 +4,7 @@ import "./MenuRow.css";
 import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
 import FoodCard from "../foodCards/FoodCard";
 
-export default function Row({ title, list }) {
+export default function MenuRow({ title, list }) {
   const ref = useRef(null);
 
   const scroll = (scrollOffset) => {
@@ -28,6 +28,7 @@ export default function Row({ title, list }) {
         {list.map((item, ind) => {
           return (
             <FoodCard
+              id={ind}
               calories={item.calories}
               name={item.name}
               img={item.img}

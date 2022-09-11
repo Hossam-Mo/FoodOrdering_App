@@ -63,7 +63,26 @@
   justify-content: space-between;
   flex: 0.1;
 }
-.nav_contant > div > svg {
+.nav_Icon {
+  position: relative;
+}
+.nav_Icon > div {
+  position: absolute;
+  top: -2px;
+  right: -6px;
+  font-size: 10px;
+  font-family: "Lora";
+  font-weight: 600;
+  color: white;
+  background-color: #e80013;
+  width: 15px;
+  height: 15px;
+  border-radius: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav_Icon > svg {
   font-size: 20px;
   color: #2e2e2e;
   cursor: pointer;
