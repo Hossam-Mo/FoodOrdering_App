@@ -8,4 +8,35 @@
   align-items: center;
   justify-content: center;
   margin-top: 100px;
+  position: relative;
+}
+
+.menu_restaurant > img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.menu_restaurant > h1 {
+  font-family: "Lora";
+  color: #303030;
+  font-size: 50px;
+  text-shadow: 4px 2px 4px #2e2e2e;
+  font-weight: 300;
+}
+.menu_restaurant > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  margin-top: -24px;
+  background-image: linear-gradient(to bottom, #f8bba3, #2e2e2e00);
+  clip-path: polygon(99% 139%, 0 0, 100% 0);
+  clip-path: polygon(5% 1%, 17% 115%, 104% 48%);
+
+  padding: 132px 0;
+  background-image: url(http://localhost:3000/assets/mainBackground.png);
 }

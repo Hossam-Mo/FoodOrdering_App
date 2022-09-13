@@ -51,7 +51,7 @@
 }
 
 .restaurants_contants > img {
-  width: 170px;
+  width: 100px;
   height: auto;
   object-fit: contain;
 }

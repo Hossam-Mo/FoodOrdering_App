@@ -28,7 +28,7 @@ export default function MenuRow({ title, list }) {
         {list.map((item, ind) => {
           return (
             <FoodCard
-              id={ind}
+              id={item.id}
               calories={item.calories}
               name={item.name}
               img={item.img}

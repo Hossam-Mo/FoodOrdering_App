@@ -4,6 +4,9 @@ import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
 import HedersLabels from "../heders labels/HedersLabels";
 import { useDispatch } from "react-redux";
 import { get_restaurantsList } from "../../redux/actionTypes";
+import { useEffect } from "react";
+import { db } from "../../firebase";
+import { collection, getDocs, onSnapshot } from "firebase/firestore";
 
 export default function Restaurants() {
   const [restaurantsList, setRestaurantsList] = useState([
@@ -22,8 +25,47 @@ export default function Restaurants() {
     { name: "KFC", imgUrl: "/assets/restaurants/KFC.png" },
   ]);
   const dispatch = useDispatch();
-
   const ref = useRef(null);
+
+  useEffect(() => {
+    const restaurants = collection(db, "restaurants");
+
+    const unSub = onSnapshot(restaurants, (res) => {
+      setRestaurantsList(
+        res.docs.map((doc) => {
+          return { ...doc.data(), id: doc.id };
+        })
+      );
+    });
+
+    // Firebase
+    /*  const restaurant = collection(
+      db,
+      "restaurants",
+      "AGUKv2Lx1ebfBQYoAvA4",
+      "Menu",
+      "Drinks",
+      "items"
+    );
+    const unsubscribe = onSnapshot(restaurant, (querySnapshot) => {
+      const cities = [];
+      querySnapshot.forEach((doc) => {
+        cities.push(doc.data());
+      });
+      console.log(cities);
+    }); */
+    /*   getDocs(restaurant)
+      .then((res) => {
+        console.log(
+          res.docs.map((doc) => {
+            return { ...doc.data(), id: doc.id };
+          })
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      }); */
+  }, []);
 
   const scroll = (scrollOffset) => {
     ref.current.scrollLeft += scrollOffset;
@@ -58,7 +100,7 @@ export default function Restaurants() {
           return (
             <img
               key={ind}
-              src={rest.imgUrl}
+              src={rest.logo}
               alt={rest.name}
               onClick={() => {
                 ShowList(rest);

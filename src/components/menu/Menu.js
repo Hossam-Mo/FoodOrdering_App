@@ -1,6 +1,7 @@
+import { collection, getDoc, getDocs, onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import FoodCard from "./foodCards/FoodCard";
+import { db } from "../../firebase";
 import "./menu.css";
 import MenuRow from "./row/MenuRow";
 export default function Menu() {
@@ -8,72 +9,76 @@ export default function Menu() {
     return state.getRestaurantsList;
   });
 
-  const [list, setList] = useState([
-    {
-      name: "Fanta",
-      img: "https://firebasestorage.googleapis.com/v0/b/restaurantapp-c2ed6.appspot.com/o/Images%2F1648182367552-d6.png?alt=media&token=d6e5479a-9a94-4633-bbbb-248fef5da280",
-      calories: 45,
-      price: 0.5,
-    },
-    {
-      name: "Fanta",
-      img: "https://firebasestorage.googleapis.com/v0/b/restaurantapp-c2ed6.appspot.com/o/Images%2F1648182367552-d6.png?alt=media&token=d6e5479a-9a94-4633-bbbb-248fef5da280",
-      calories: 45,
-      price: 0.5,
-    },
-    {
-      name: "Fanta",
-      img: "https://firebasestorage.googleapis.com/v0/b/restaurantapp-c2ed6.appspot.com/o/Images%2F1648182367552-d6.png?alt=media&token=d6e5479a-9a94-4633-bbbb-248fef5da280",
-      calories: 45,
-      price: 0.5,
-    },
-    {
-      name: "Fanta",
-      img: "https://firebasestorage.googleapis.com/v0/b/restaurantapp-c2ed6.appspot.com/o/Images%2F1648182367552-d6.png?alt=media&token=d6e5479a-9a94-4633-bbbb-248fef5da280",
-      calories: 45,
-      price: 0.5,
-    },
-    {
-      name: "Fanta",
-      img: "https://firebasestorage.googleapis.com/v0/b/restaurantapp-c2ed6.appspot.com/o/Images%2F1648182367552-d6.png?alt=media&token=d6e5479a-9a94-4633-bbbb-248fef5da280",
-      calories: 45,
-      price: 0.5,
-    },
-    {
-      name: "Fanta",
-      img: "https://firebasestorage.googleapis.com/v0/b/restaurantapp-c2ed6.appspot.com/o/Images%2F1648182367552-d6.png?alt=media&token=d6e5479a-9a94-4633-bbbb-248fef5da280",
-      calories: 45,
-      price: 0.5,
-    },
-    {
-      name: "Fanta",
-      img: "https://firebasestorage.googleapis.com/v0/b/restaurantapp-c2ed6.appspot.com/o/Images%2F1648182367552-d6.png?alt=media&token=d6e5479a-9a94-4633-bbbb-248fef5da280",
-      calories: 45,
-      price: 0.5,
-    },
-    {
-      name: "Fanta",
-      img: "https://firebasestorage.googleapis.com/v0/b/restaurantapp-c2ed6.appspot.com/o/Images%2F1648182367552-d6.png?alt=media&token=d6e5479a-9a94-4633-bbbb-248fef5da280",
-      calories: 45,
-      price: 0.5,
-    },
-    {
-      name: "Fanta",
-      img: "https://firebasestorage.googleapis.com/v0/b/restaurantapp-c2ed6.appspot.com/o/Images%2F1648182367552-d6.png?alt=media&token=d6e5479a-9a94-4633-bbbb-248fef5da280",
-      calories: 45,
-      price: 0.5,
-    },
-  ]);
+  const [list, setList] = useState([]);
   useEffect(() => {
     console.log(restaurant);
   }, [restaurant]);
 
+  useEffect(() => {
+    console.log(list);
+  }, [list]);
+
+  useEffect(() => {
+    if (restaurant) {
+      setList([]);
+
+      const resLists = collection(db, "restaurants", restaurant.id, "Menu");
+      getDocs(resLists)
+        .then((res) => {
+          res.docs.forEach((collec) => {
+            getDocs(
+              collection(
+                db,
+                "restaurants",
+                restaurant.id,
+                "Menu",
+                collec.id,
+                "items"
+              )
+            )
+              .then((res) => {
+                res.docs.forEach((doc) => {
+                  setList((oldState) => {
+                    return [
+                      ...oldState,
+                      {
+                        collection: collec.id,
+                        list: [{ ...doc.data(), id: doc.id }],
+                      },
+                    ];
+                  });
+                });
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [restaurant]);
+
   return (
     <div className="menu">
-      <div className="menu_restaurant">
-        <img src={restaurant?.imgUrl} alt={restaurant?.name}></img>
-      </div>
-      <MenuRow title={"Drinks"} list={list}></MenuRow>
+      {restaurant && (
+        <div className="menu_restaurant">
+          <div></div>
+          <img src={restaurant?.logo} alt={restaurant?.name}></img>
+          <h1>{restaurant?.name}</h1>
+        </div>
+      )}
+
+      {list?.map((row) => {
+        return (
+          <MenuRow
+            key={row.collection}
+            title={row.collection}
+            list={row.list}
+          ></MenuRow>
+        );
+      })}
     </div>
   );
 }
