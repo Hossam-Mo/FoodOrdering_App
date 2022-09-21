@@ -6,6 +6,7 @@
   transition: all 0.5s ease;
   width: 100%;
   max-width: 280px;
+  margin-top: 25px;
 }
 .input:hover > .input_bottomLine {
   background-color: #f69d7a;
@@ -19,6 +20,7 @@
   width: 100%;
   font-family: "lora";
   padding: 10px;
+  margin-left: 15px;
 }
 .input > input:focus + p {
   left: -50px;
@@ -65,8 +67,8 @@
 }
 .input_invIcon:hover > div {
   opacity: 1;
-  width: 83px;
-  font-size: 13px;
+  width: 120px;
+  font-size: 12px;
 }
 .input_bottomLine {
   position: absolute;

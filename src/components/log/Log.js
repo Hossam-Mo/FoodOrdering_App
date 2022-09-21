@@ -2,7 +2,7 @@ import React from "react";
 import "./log.css";
 import { FcGoogle } from "react-icons/fc";
 import Input from "../input/Input";
-import { validEmail } from "../../regex/regex";
+import { validEmail, validPassword } from "../../regex/regex";
 
 export default function Log() {
   return (
@@ -27,6 +27,13 @@ export default function Log() {
               placeholder={"Email"}
               onChange={() => {}}
               regex={validEmail}
+              type={"email"}
+            ></Input>
+            <Input
+              placeholder={"Password"}
+              onChange={() => {}}
+              regex={validPassword}
+              type={"password"}
             ></Input>
           </div>
         </div>
