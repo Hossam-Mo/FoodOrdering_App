@@ -2,6 +2,7 @@ import React from "react";
 import "./log.css";
 import { FcGoogle } from "react-icons/fc";
 import Input from "../input/Input";
+import { validEmail } from "../../regex/regex";
 
 export default function Log() {
   return (
@@ -22,7 +23,11 @@ export default function Log() {
             <div></div>
           </div>
           <div className="log_form">
-            <Input placeholder={"Email"} onChange={() => {}}></Input>
+            <Input
+              placeholder={"Email"}
+              onChange={() => {}}
+              regex={validEmail}
+            ></Input>
           </div>
         </div>
 

@@ -1,12 +1,13 @@
 .input {
   display: flex;
+  align-items: center;
   position: relative;
   font-family: "lora";
   transition: all 0.5s ease;
   width: 100%;
   max-width: 280px;
 }
-.input:hover > div {
+.input:hover > .input_bottomLine {
   background-color: #f69d7a;
 }
 .input:hover > p {
@@ -23,7 +24,7 @@
   left: -50px;
   color: #f69d7a;
 }
-.input > input:focus ~ div {
+.input > input:focus ~ .input_bottomLine {
   background-color: #f69d7a;
 }
 
@@ -37,8 +38,37 @@
 .input_P {
   left: -50px !important;
 }
+.input_invIcon {
+  opacity: 0;
+  font-size: 20px;
+  transition: all 0.5s ease;
+  position: relative;
+  pointer-events: none;
+}
 
-.input > div {
+.input_invIcon > div {
+  position: absolute;
+  top: -13px;
+  left: 22px;
+  font-size: 0px;
+  background-color: rgb(211, 29, 29);
+  padding: 10px;
+  width: 0px;
+  border-radius: 36px;
+  color: white;
+  display: flex;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.input_invIcon:hover > div {
+  opacity: 1;
+  width: 83px;
+  font-size: 13px;
+}
+.input_bottomLine {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -46,4 +76,57 @@
   height: 1px;
   background-color: black;
   transition: all 0.5s ease;
+}
+
+.input_invalid > .input_bottomLine {
+  background-color: rgb(212, 8, 8) !important;
+}
+.input_invalid > p {
+  color: rgb(212, 8, 8) !important;
+  animation-name: invalid;
+  animation-duration: 1.5s;
+}
+.input_invalid > .input_invIcon {
+  pointer-events: all;
+  cursor: pointer;
+  color: rgb(212, 8, 8);
+  animation-name: invalid;
+  animation-duration: 1.5s;
+  opacity: 1;
+}
+
+@keyframes invalid {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(0x, 0px) rotate(0deg);
+  }
 }

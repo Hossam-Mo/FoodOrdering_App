@@ -1,27 +1,38 @@
 import React, { useEffect, useState } from "react";
 import "./input.css";
+import { BiErrorCircle } from "react-icons/bi";
 
-export default function Input({ placeholder, onChange }) {
+export default function Input({ placeholder, onChange, regex }) {
   const [inputValue, setInputValue] = useState(null);
+  const [regError, setRegError] = useState(false);
 
-  useEffect(() => {
-    console.log(inputValue);
-    if (inputValue === "") {
+  const regexCheck = () => {
+    setRegError(false);
+    if (!regex.test(inputValue)) {
+      setRegError(true);
+    } else {
+      setRegError(false);
     }
-  }, [inputValue]);
+  };
 
   return (
-    <div className="input">
+    <div className={`input ${regError && "input_invalid"}`}>
       <input
+        onBlur={regexCheck}
         onChange={(e) => {
           onChange(e);
           setInputValue(e.target.value);
         }}
       ></input>
-      <p className={`${inputValue != null && inputValue != "" && "input_P"}`}>
+      <p className={`${inputValue !== null && inputValue !== "" && "input_P"}`}>
         {placeholder}
       </p>
-      <div></div>
+      <div className="input_invIcon">
+        <BiErrorCircle></BiErrorCircle>
+        <div>Invalid {placeholder}</div>
+      </div>
+
+      <div className="input_bottomLine"></div>
     </div>
   );
 }
