@@ -1,5 +1,4 @@
 import React from "react";
-import HedersLabels from "../heders labels/HedersLabels";
 import LandingFood from "./LandingFood";
 import "./landPage.css";
 

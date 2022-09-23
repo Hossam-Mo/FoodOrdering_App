@@ -8,16 +8,22 @@
 }
 .log_center {
   height: 90vh;
-  width: 60vw;
+  width: 40vw;
+  max-width: 450px;
   background-color: white;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 10px 10px 30px 0px lightgrey;
+  position: relative;
 }
 .log_content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex: 0.6;
+  flex: 1;
   padding: 20px;
 }
 .log_welcome {
@@ -35,6 +41,7 @@
   color: #989ba4;
   margin: 5px 0;
   font-weight: 100;
+  margin-bottom: 15px;
 }
 
 .log_welcome > div {
@@ -76,4 +83,92 @@
 .log_form {
   width: 75%;
   max-width: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+.log_RememberMe {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Lora";
+  font-size: 14px;
+  margin-top: 15px;
+  font-weight: 400;
+}
+.log_RememberMe > p {
+  font-weight: 700;
+  text-decoration: underline;
+}
+.log_RememberMe > div {
+  display: flex;
+  align-items: center;
+}
+.log_RememberMe > div > p {
+  margin-left: 5px;
+}
+
+.log_button {
+  padding: 10px 30px;
+  border: 1px solid rgba(255, 255, 255, 0);
+  background-color: #111727;
+  border-radius: 10px;
+  font-family: "lora";
+  color: white;
+  width: 100%;
+  align-self: center;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.log_button:hover {
+  color: #111727;
+  background-color: white;
+  border-color: #111727;
+}
+.log_button:active {
+  transform: scale(0.9);
+}
+.log_dAcc {
+  margin-top: 10px;
+}
+
+.log_dAcc > p {
+  color: #919296;
+  font-family: "lora";
+  font-size: 13px;
+}
+.log_dAcc > p > span {
+  color: #111727;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.log_logo {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 35px;
+  left: 30px;
+}
+
+.log_logo > img {
+  width: 32px;
+  height: auto;
+  object-fit: contain;
+}
+.log_logo > div {
+  display: flex;
+  flex-direction: column;
+  margin-left: 6px;
+  font-family: "lora";
+  line-height: 13px;
+  margin-top: 8px;
+}
+.log_logo > div > p:nth-child(1) {
+  font-size: 17px;
+  font-weight: 600;
+}
+.log_logo > div > p:nth-child(2) {
+  font-size: 11px;
 }

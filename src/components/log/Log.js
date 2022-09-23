@@ -10,8 +10,8 @@ export default function Log() {
       <div className="log_center">
         <div className="log_content">
           <div className="log_welcome">
-            <h1>Welcome</h1>
-            <p>Please enter your details.</p>
+            <h1>Welcome !</h1>
+            <p>Please chose the way you want to log in.</p>
             <div>
               <FcGoogle></FcGoogle>
               log in with google
@@ -35,10 +35,33 @@ export default function Log() {
               regex={validPassword}
               type={"password"}
             ></Input>
+            <div className="log_RememberMe">
+              <div>
+                <input type={"checkbox"}></input>
+                <p>Remember me</p>
+              </div>
+              <p>Forget Password</p>
+            </div>
+            <button className="log_button"> Log in</button>
+          </div>
+          <div className="log_dAcc">
+            <p>
+              Dont have an account? <span>Sign up for free</span>
+            </p>
+          </div>
+          <div className="log_dAcc">
+            <p>
+              Want to sign up as a restaurant? <span>Sign up for free</span>
+            </p>
           </div>
         </div>
-
-        <div></div>
+        <div className="log_logo">
+          <img src="/assets/logo.png" alt="Logo"></img>
+          <div>
+            <p>Taste!</p>
+            <p>Food service</p>
+          </div>
+        </div>
       </div>
     </div>
   );
