@@ -1,0 +1,121 @@
+.signUp {
+  height: 100vh;
+  width: 100vw;
+  background-color: #e6e8ec;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signUp_center {
+  height: 90vh;
+  width: 40vw;
+  max-width: 400px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  border-radius: 10px;
+
+  box-shadow: 10px 10px 30px 0px lightgrey;
+  position: relative;
+}
+.signUp_title {
+  height: 10%;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+.signUp_title > h1 {
+  color: black;
+  font-family: "lora";
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.signUp_google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 28px;
+  border: 1px solid #989ba4;
+  border-radius: 150px;
+  font-family: "Lora";
+  font-size: 14px;
+  color: #161925;
+}
+.signUp_google > svg {
+  margin-right: 5px;
+  font-size: 18px;
+}
+
+.signUp_OR {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 20px 0;
+}
+.signUp_OR > p {
+  color: #989ba4;
+  font-family: "Lora";
+  font-weight: 100;
+  font-size: 10px;
+}
+.signUp_OR > div {
+  background-color: #dce0eb;
+  height: 0.8px;
+  width: 38%;
+  border-radius: 500px;
+}
+
+.signUp_form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.signUp_button {
+  padding: 10px 30px;
+  border: 1px solid rgba(255, 255, 255, 0);
+  background-color: #111727;
+  border-radius: 10px;
+  font-family: "lora";
+  color: white;
+  width: 100%;
+  align-self: center;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.signUp_button:hover {
+  color: #111727;
+  background-color: white;
+  border-color: #111727;
+}
+.signUp_button:active {
+  transform: scale(0.9);
+}
+
+.signUp_terms {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Lora";
+  font-size: 14px;
+  margin-top: 15px;
+  font-weight: 400;
+}
+.signUp_terms > div {
+  display: flex;
+  align-items: center;
+}
+.signUp_terms > div > p {
+  margin-left: 5px;
+}
+
+.signUp_terms > div > p > span {
+  color: #094aaa;
+  font-size: 15px;
+  cursor: pointer;
+}

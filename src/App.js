@@ -3,6 +3,7 @@ import Main from "./components/main/Main";
 import Nav from "./components/nav/Nav";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Log from "./components/log/Log";
+import SignUp from "./components/log/signUp/SignUp";
 
 function App() {
   return (
@@ -18,7 +19,10 @@ function App() {
               </div>
             }
           ></Route>
-          <Route path="/login" element={<Log></Log>}></Route>
+          <Route path="/login">
+            <Route index element={<Log></Log>}></Route>
+            <Route path="newAccount" element={<SignUp></SignUp>}></Route>
+          </Route>
         </Routes>
       </Router>
     </div>
