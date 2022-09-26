@@ -54,6 +54,7 @@
   font-family: "Lora";
   font-size: 14px;
   color: #161925;
+  cursor: pointer;
 }
 .log_welcome > div > svg {
   margin-right: 5px;
@@ -143,7 +144,10 @@
   font-size: 14px;
   cursor: pointer;
 }
-
+.log_dAcc > p > span > a {
+  text-decoration: none;
+  color: inherit;
+}
 .log_logo {
   display: flex;
   align-items: center;

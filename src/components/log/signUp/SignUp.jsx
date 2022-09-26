@@ -15,41 +15,51 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
-import { useEffect } from "react";
+import { useState } from "react";
 
 export default function SignUp({ type }) {
-  useEffect(() => {
-    console.log(auth.currentUser);
-  }, [auth.currentUser]);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   const signUpWithEmail = () => {
-    createUserWithEmailAndPassword(auth, "ahmadhosamhqb@gmail.com", "asddxyz")
-      .then((res) => {
-        updateProfile(res.user, {
-          displayName: "hossam",
-          phoneNumber: "0792659671",
-        })
-          .then(() => {
-            console.log(auth.currentUser);
-
-            setDoc(doc(db, "users", res.user.uid), {
-              location: type === "restaurant" ? true : false,
-              type: type,
-            })
-              .then(() => {
-                console.log("secc");
-              })
-              .catch((err) => {
-                console.log(err);
-              });
+    if (
+      validEmail.test(email) &&
+      validPassword.test(password) &&
+      validPhoneNumber.test(phoneNumber) &&
+      validUsername.test(name)
+    ) {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((res) => {
+          updateProfile(res.user, {
+            displayName: name,
+            phoneNumber: phoneNumber,
           })
-          .catch((err) => {
-            console.log(err);
-          });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+            .then(() => {
+              console.log(auth.currentUser);
+
+              setDoc(doc(db, "users", res.user.uid), {
+                location: type === "restaurant" ? true : false,
+                type: type,
+              })
+                .then(() => {
+                  console.log("secc");
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      console.log("Invalid input");
+    }
   };
   const signUpWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
@@ -93,25 +103,33 @@ export default function SignUp({ type }) {
         <div className="signUp_form">
           <Input
             placeholder={`${type === "restaurant" ? "Resturant" : "Name"}`}
-            onChange={() => {}}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
             regex={validUsername}
             type={"text"}
           ></Input>
           <Input
             placeholder={"Email"}
-            onChange={() => {}}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
             regex={validEmail}
             type={"email"}
           ></Input>
           <Input
             placeholder={"Password"}
-            onChange={() => {}}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
             regex={validPassword}
             type={"password"}
           ></Input>
           <Input
             placeholder={"Phone"}
-            onChange={() => {}}
+            onChange={(e) => {
+              setPhoneNumber(e.target.value);
+            }}
             regex={validPhoneNumber}
             type={"number"}
           ></Input>

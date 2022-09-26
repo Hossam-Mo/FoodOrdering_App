@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./log.css";
 import { FcGoogle } from "react-icons/fc";
 import Input from "../input/Input";
@@ -6,7 +6,11 @@ import { validEmail, validPassword } from "../../regex/regex";
 
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../../firebase";
+import { Link } from "react-router-dom";
 export default function Log() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const signInWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
       .then((res) => {
@@ -18,13 +22,17 @@ export default function Log() {
   };
 
   const signInWithEmail = () => {
-    signInWithEmailAndPassword(auth, "ahmadhosamhqb@gmail.com", "asddxyz")
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (validEmail.test(email) && validPassword.test(password)) {
+      signInWithEmailAndPassword(auth, email, password)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      console.log("invalid email or password");
+    }
   };
   return (
     <div className="log">
@@ -46,13 +54,17 @@ export default function Log() {
           <div className="log_form">
             <Input
               placeholder={"Email"}
-              onChange={() => {}}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
               regex={validEmail}
               type={"email"}
             ></Input>
             <Input
               placeholder={"Password"}
-              onChange={() => {}}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
               regex={validPassword}
               type={"password"}
             ></Input>
@@ -64,18 +76,23 @@ export default function Log() {
               <p>Forget Password</p>
             </div>
             <button onClick={signInWithEmail} className="log_button">
-              {" "}
               Log in
             </button>
           </div>
           <div className="log_dAcc">
             <p>
-              Dont have an account? <span>Sign up for free</span>
+              Dont have an account?{" "}
+              <span>
+                <Link to={"/login/newUser"}>Sign up for free</Link>
+              </span>
             </p>
           </div>
           <div className="log_dAcc">
             <p>
-              Want to sign up as a restaurant? <span>Sign up for free</span>
+              Want to sign up as a restaurant?{" "}
+              <span>
+                <Link to={"/login/newRestaurant"}>Sign up for free</Link>
+              </span>
             </p>
           </div>
         </div>
