@@ -38,6 +38,7 @@ export default function Restaurants() {
       );
     });
 
+    return unSub;
     // Firebase
     /*  const restaurant = collection(
       db,

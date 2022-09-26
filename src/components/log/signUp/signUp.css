@@ -43,6 +43,7 @@
   font-family: "Lora";
   font-size: 14px;
   color: #161925;
+  cursor: pointer;
 }
 .signUp_google > svg {
   margin-right: 5px;

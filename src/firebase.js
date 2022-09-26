@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyBxhQuXd6vgTfv7QJT5v9cklW23mv0bP4Y",
   authDomain: "taste--food-services.firebaseapp.com",
@@ -11,4 +12,6 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+export const googleProvider = new GoogleAuthProvider();
 export const db = getFirestore(app);
+export const auth = getAuth(app);

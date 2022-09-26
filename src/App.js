@@ -21,7 +21,14 @@ function App() {
           ></Route>
           <Route path="/login">
             <Route index element={<Log></Log>}></Route>
-            <Route path="newAccount" element={<SignUp></SignUp>}></Route>
+            <Route
+              path="newUser"
+              element={<SignUp type={"user"}></SignUp>}
+            ></Route>
+            <Route
+              path="newRestaurant"
+              element={<SignUp type={"restaurant"}></SignUp>}
+            ></Route>
           </Route>
         </Routes>
       </Router>

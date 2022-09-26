@@ -4,7 +4,28 @@ import { FcGoogle } from "react-icons/fc";
 import Input from "../input/Input";
 import { validEmail, validPassword } from "../../regex/regex";
 
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, googleProvider } from "../../firebase";
 export default function Log() {
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const signInWithEmail = () => {
+    signInWithEmailAndPassword(auth, "ahmadhosamhqb@gmail.com", "asddxyz")
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <div className="log">
       <div className="log_center">
@@ -12,7 +33,7 @@ export default function Log() {
           <div className="log_welcome">
             <h1>Welcome !</h1>
             <p>Please chose the way you want to log in.</p>
-            <div>
+            <div onClick={signInWithGoogle}>
               <FcGoogle></FcGoogle>
               log in with google
             </div>
@@ -42,7 +63,10 @@ export default function Log() {
               </div>
               <p>Forget Password</p>
             </div>
-            <button className="log_button"> Log in</button>
+            <button onClick={signInWithEmail} className="log_button">
+              {" "}
+              Log in
+            </button>
           </div>
           <div className="log_dAcc">
             <p>
