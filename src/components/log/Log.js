@@ -5,16 +5,42 @@ import Input from "../input/Input";
 import { validEmail, validPassword } from "../../regex/regex";
 
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, googleProvider } from "../../firebase";
-import { Link } from "react-router-dom";
+import { auth, db, googleProvider } from "../../firebase";
+import { Link, useNavigate } from "react-router-dom";
+import { doc, setDoc } from "firebase/firestore";
+import { useDispatch, useSelector } from "react-redux";
+import { get_user } from "../../redux/actionTypes";
 export default function Log() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.getUser);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user]);
 
   const signInWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
       .then((res) => {
         console.log(res);
+        setDoc(doc(db, "users", res.user.uid), {
+          location: false,
+          type: "user",
+        })
+          .then(() => {
+            console.log("secc");
+            dispatch({
+              type: get_user.type,
+              user: auth.currentUser,
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((err) => {
         console.log(err);
@@ -25,13 +51,17 @@ export default function Log() {
     if (validEmail.test(email) && validPassword.test(password)) {
       signInWithEmailAndPassword(auth, email, password)
         .then((res) => {
-          console.log(res);
+          console.log(auth.currentUser);
+          dispatch({
+            type: get_user.type,
+            user: auth.currentUser,
+          });
         })
         .catch((err) => {
           console.log(err);
         });
     } else {
-      console.log("invalid email or password");
+      alert("invalid email or password");
     }
   };
   return (
@@ -96,13 +126,14 @@ export default function Log() {
             </p>
           </div>
         </div>
-        <div className="log_logo">
+
+        <Link to={"/"} className="log_logo">
           <img src="/assets/logo.png" alt="Logo"></img>
           <div>
             <p>Taste!</p>
             <p>Food service</p>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );

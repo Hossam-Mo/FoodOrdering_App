@@ -20,3 +20,7 @@ export const cart_itemDelete = {
 export const cart_clear = {
   type: "cart_clear",
 };
+
+export const get_user = {
+  type: "get_user",
+};

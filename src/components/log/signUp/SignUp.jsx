@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./signUp.css";
 import { FcGoogle } from "react-icons/fc";
 import {
@@ -16,13 +16,24 @@ import {
 } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { get_user } from "../../../redux/actionTypes";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp({ type }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.getUser);
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user]);
   const signUpWithEmail = () => {
     if (
       validEmail.test(email) &&
@@ -37,8 +48,6 @@ export default function SignUp({ type }) {
             phoneNumber: phoneNumber,
           })
             .then(() => {
-              console.log(auth.currentUser);
-
               setDoc(doc(db, "users", res.user.uid), {
                 location: type === "restaurant" ? true : false,
                 type: type,
@@ -49,6 +58,11 @@ export default function SignUp({ type }) {
                 .catch((err) => {
                   console.log(err);
                 });
+
+              dispatch({
+                type: get_user.type,
+                user: auth.currentUser,
+              });
             })
             .catch((err) => {
               console.log(err);
@@ -71,6 +85,10 @@ export default function SignUp({ type }) {
         })
           .then(() => {
             console.log("secc");
+            dispatch({
+              type: get_user.type,
+              user: auth.currentUser,
+            });
           })
           .catch((err) => {
             console.log(err);
@@ -150,7 +168,6 @@ export default function SignUp({ type }) {
             </div>
           </div>
           <button className="signUp_button" onClick={signUpWithEmail}>
-            {" "}
             Log in
           </button>
         </div>

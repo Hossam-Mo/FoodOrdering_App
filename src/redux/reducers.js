@@ -5,9 +5,9 @@ import {
   increase_cart_count,
   cart_itemDelete,
   cart_clear,
+  get_user,
 } from "./actionTypes";
 import { configureStore } from "@reduxjs/toolkit";
-
 const getRestaurantsList = (state = null, action) => {
   switch (action.type) {
     case get_restaurantsList:
@@ -54,6 +54,20 @@ const addToCart = (state = [], action) => {
       return state;
   }
 };
+
+const getUser = (state = null, action) => {
+  switch (action.type) {
+    case get_user.type:
+      return action.user;
+    default:
+      return state;
+  }
+};
 export const store = configureStore({
-  reducer: { getRestaurantsList, addToCart },
+  reducer: { getRestaurantsList, addToCart, getUser },
+
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
