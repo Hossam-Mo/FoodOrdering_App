@@ -61,7 +61,15 @@ export default function SignUp({ type }) {
 
               dispatch({
                 type: get_user.type,
-                user: auth.currentUser,
+                user: {
+                  name: auth.currentUser.displayName,
+                  photoURL: auth.currentUser.photoURL,
+                  email: auth.currentUser.email,
+                  phoneNumber: auth.currentUser.phoneNumber,
+                  uid: auth.currentUser.uid,
+                  location: type === "restaurant" ? true : false,
+                  type: type,
+                },
               });
             })
             .catch((err) => {
@@ -87,7 +95,15 @@ export default function SignUp({ type }) {
             console.log("secc");
             dispatch({
               type: get_user.type,
-              user: auth.currentUser,
+              user: {
+                name: auth.currentUser.displayName,
+                photoURL: auth.currentUser.photoURL,
+                email: auth.currentUser.email,
+                phoneNumber: auth.currentUser.phoneNumber,
+                uid: auth.currentUser.uid,
+                location: type === "restaurant" ? true : false,
+                type: type,
+              },
             });
           })
           .catch((err) => {

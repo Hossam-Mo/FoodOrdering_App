@@ -7,7 +7,7 @@ import { validEmail, validPassword } from "../../regex/regex";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, db, googleProvider } from "../../firebase";
 import { Link, useNavigate } from "react-router-dom";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useDispatch, useSelector } from "react-redux";
 import { get_user } from "../../redux/actionTypes";
 export default function Log() {
@@ -27,16 +27,45 @@ export default function Log() {
     signInWithPopup(auth, googleProvider)
       .then((res) => {
         console.log(res);
-        setDoc(doc(db, "users", res.user.uid), {
-          location: false,
-          type: "user",
-        })
-          .then(() => {
+        getDoc(doc(db, "users", res.user.uid))
+          .then((result) => {
+            if (result.exists()) {
+              dispatch({
+                type: get_user.type,
+                user: {
+                  name: auth.currentUser.displayName,
+                  photoURL: auth.currentUser.photoURL,
+                  email: auth.currentUser.email,
+                  phoneNumber: auth.currentUser.phoneNumber,
+                  uid: auth.currentUser.uid,
+                  location: result.data().location,
+                  type: result.data().type,
+                },
+              });
+            } else {
+              setDoc(doc(db, "users", res.user.uid), {
+                type: "user",
+                location: false,
+              })
+                .then(() => {
+                  dispatch({
+                    type: get_user.type,
+                    user: {
+                      name: auth.currentUser.displayName,
+                      photoURL: auth.currentUser.photoURL,
+                      email: auth.currentUser.email,
+                      phoneNumber: auth.currentUser.phoneNumber,
+                      uid: auth.currentUser.uid,
+                      location: false,
+                      type: "user",
+                    },
+                  });
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            }
             console.log("secc");
-            dispatch({
-              type: get_user.type,
-              user: auth.currentUser,
-            });
           })
           .catch((err) => {
             console.log(err);
@@ -50,12 +79,26 @@ export default function Log() {
   const signInWithEmail = () => {
     if (validEmail.test(email) && validPassword.test(password)) {
       signInWithEmailAndPassword(auth, email, password)
-        .then((res) => {
+        .then(() => {
           console.log(auth.currentUser);
-          dispatch({
-            type: get_user.type,
-            user: auth.currentUser,
-          });
+          getDoc(doc(db, "users", auth.currentUser.uid))
+            .then((res) => {
+              dispatch({
+                type: get_user.type,
+                user: {
+                  name: auth.currentUser.displayName,
+                  photoURL: auth.currentUser.photoURL,
+                  email: auth.currentUser.email,
+                  phoneNumber: auth.currentUser.phoneNumber,
+                  uid: auth.currentUser.uid,
+                  location: res.data().location,
+                  type: res.data().type,
+                },
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         })
         .catch((err) => {
           console.log(err);
