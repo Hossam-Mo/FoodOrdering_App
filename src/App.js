@@ -14,6 +14,7 @@ import { doc, getDoc } from "firebase/firestore";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
+    console.log(auth.currentUser);
     onAuthStateChanged(auth, (user) => {
       if (user) {
         getDoc(doc(db, "users", user.uid))

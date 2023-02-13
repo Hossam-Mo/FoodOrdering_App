@@ -70,13 +70,9 @@ export default function Menu() {
         </div>
       )}
 
-      {list?.map((row) => {
+      {list?.map((row, ind) => {
         return (
-          <MenuRow
-            key={row.collection}
-            title={row.collection}
-            list={row.list}
-          ></MenuRow>
+          <MenuRow key={ind} title={row.collection} list={row.list}></MenuRow>
         );
       })}
     </div>
