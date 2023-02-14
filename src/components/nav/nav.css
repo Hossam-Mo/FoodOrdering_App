@@ -63,6 +63,30 @@
   justify-content: space-between;
   flex: 0.1;
 }
+.nav_resAdd {
+  padding: 1px;
+  background-color: #f8b89f;
+  border-radius: 20px;
+  margin-right: 8px;
+  border: 1px solid lightgray;
+  outline: none;
+  font-family: lora;
+  color: white;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+.nav_resAdd:hover {
+  background-color: white;
+  color: #f8b89f;
+}
+.nav_resAdd:active {
+  background-color: #f8b89f;
+  color: #f5f3f3;
+}
 .nav_Icon {
   position: relative;
 }

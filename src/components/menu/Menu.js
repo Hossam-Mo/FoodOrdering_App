@@ -10,16 +10,18 @@ export default function Menu() {
   });
 
   const [list, setList] = useState([]);
+  const user = useSelector((state) => state.getUser);
+
   useEffect(() => {
-    console.log(restaurant);
-  }, [restaurant]);
+    console.log(user);
+  }, [user]);
 
   useEffect(() => {
     console.log(list);
   }, [list]);
 
   useEffect(() => {
-    if (restaurant) {
+    if (restaurant && user?.type !== "restaurant") {
       setList([]);
 
       const resLists = collection(db, "restaurants", restaurant.id, "Menu");
@@ -58,18 +60,30 @@ export default function Menu() {
           console.log(err);
         });
     }
+    // get the calac that the restaurannt have
+    if (user?.type === "restaurant") {
+    }
   }, [restaurant]);
 
   return (
     <div className="menu">
-      {restaurant && (
+      {restaurant && user?.type !== "restaurant" && (
         <div className="menu_restaurant">
           <div></div>
           <img src={restaurant?.logo} alt={restaurant?.name}></img>
           <h1>{restaurant?.name}</h1>
         </div>
       )}
-
+      {user?.type === "restaurant" && (
+        <div className="menu_restaurant">
+          <div></div>
+          <img
+            src={user?.photoURL || "/assets/restaurantAvatar.png"}
+            alt={user?.name}
+          ></img>
+          <h1>{user?.name}</h1>
+        </div>
+      )}
       {list?.map((row, ind) => {
         return (
           <MenuRow key={ind} title={row.collection} list={row.list}></MenuRow>

@@ -1,27 +1,45 @@
 import React from "react";
 import "./nav.css";
-import { IoMdBasket } from "react-icons/io";
+import { IoMdBasket, IoIosAddCircleOutline } from "react-icons/io";
 import Cart from "./cart/Cart";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { signOut } from "firebase/auth";
-import { auth } from "../../firebase";
+import { auth, db } from "../../firebase";
+import { doc, setDoc } from "firebase/firestore";
+import Model from "../model/Model";
+import AddRes from "./addRes/AddRes";
 
 export default function Nav() {
   const [cartOpener, setCartOpener] = useState(false);
   const cartList = useSelector((state) => state.addToCart);
   const user = useSelector((state) => state.getUser);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     console.log(user);
   }, [user]);
 
+  const addToTheMenu = () => {
+    console.log("click");
+    setOpen(true);
+    /*  setDoc(doc(db, "restaurant", user?.uid, "Menu", "userCalac"), {
+      test: true,
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      }); */
+  };
+
   const userSignOut = () => {
     signOut(auth)
       .then((res) => {
-        console.log(res, "everybody fuck off");
+        console.log(res, "user is out ");
       })
       .catch((err) => {
         console.log(err);
@@ -29,6 +47,9 @@ export default function Nav() {
   };
   return (
     <nav className="nav">
+      <Model open={open} setOpen={setOpen}>
+        <AddRes />
+      </Model>
       <div className="nav_logo">
         <img src="/assets/logo.png" alt="Logo"></img>
         <div>
@@ -44,20 +65,30 @@ export default function Nav() {
           <li>Service</li>
         </ul>
         <div>
-          <div
-            className="nav_Icon"
-            onClick={() => {
-              setCartOpener(true);
-            }}
-          >
-            {cartList.length > 0 && <div>{cartList.length}</div>}
-            <IoMdBasket></IoMdBasket>
-          </div>
+          {user?.type === "restaurant" ? (
+            <button onClick={addToTheMenu} className="nav_resAdd">
+              <IoIosAddCircleOutline />
+            </button>
+          ) : (
+            <div
+              className="nav_Icon"
+              onClick={() => {
+                setCartOpener(true);
+              }}
+            >
+              {cartList.length > 0 && <div>{cartList.length}</div>}
+              <IoMdBasket></IoMdBasket>
+            </div>
+          )}
 
           <Link onClick={userSignOut} to={"/login"}>
             <img
               className="nav_avatar"
-              src={user?.photoURL || "/assets/userAvatar.png"}
+              src={
+                user?.photoURL || user?.type === "restaurant"
+                  ? "/assets/restaurantAvatar.png"
+                  : "/assets/userAvatar.png"
+              }
               alt="Avatar"
             />
           </Link>
