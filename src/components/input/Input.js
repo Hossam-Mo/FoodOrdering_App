@@ -18,7 +18,7 @@ export default function Input({ placeholder, onChange, regex, type }) {
   return (
     <div className={`input ${regError && "input_invalid"}`}>
       <input
-        type={type}
+        type={type || "text"}
         onBlur={regexCheck}
         onChange={(e) => {
           onChange(e);

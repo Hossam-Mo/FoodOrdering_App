@@ -1,2 +1,99 @@
 .addRes {
+  display: flex;
+  flex-direction: column;
+  font-family: "lora";
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+}
+
+.addRes_logo {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 40px;
+  left: 54px;
+}
+
+.addRes_logo > img {
+  width: 32px;
+  height: auto;
+  object-fit: contain;
+}
+.addRes_logo > div {
+  display: flex;
+  flex-direction: column;
+  margin-left: 6px;
+  font-family: "lora";
+  line-height: 13px;
+  margin-top: 8px;
+}
+.addRes_logo > div > p:nth-child(1) {
+  font-size: 17px;
+  font-weight: 600;
+}
+.addRes_logo > div > p:nth-child(2) {
+  font-size: 11px;
+}
+
+.addRes > h1 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  margin-top: 55px;
+  color: #655447;
+}
+
+.addRes > input {
+  border: 1px solid gray;
+  padding: 6px 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-family: "lora";
+}
+.addRes > button {
+  padding: 7px 14px;
+  background-color: #3a3735;
+  border: none;
+  border-bottom: 1px solid lightgray;
+  border-radius: 32px;
+  color: white;
+  font-family: "lora";
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.addRes > button:active {
+  transform: scale(0.9);
+}
+
+.addRes_form {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  max-height: 200.8px;
+}
+
+.addRes_OR {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 20px 0;
+}
+.addRes_OR > p {
+  color: #989ba4;
+  font-family: "Lora";
+  font-weight: 100;
+  font-size: 10px;
+}
+.addRes_OR > div {
+  background-color: #dce0eb;
+  height: 0.8px;
+  width: 38%;
+  border-radius: 500px;
+}
+
+.addRes_save {
+  background-color: #ef6c15 !important;
 }

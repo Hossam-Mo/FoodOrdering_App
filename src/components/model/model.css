@@ -13,7 +13,7 @@
   position: relative;
   background-color: white;
   width: 50vw;
-  height: 50vh;
+  max-height: 100vh;
   z-index: 1000000;
   border-radius: 10px;
   text-align: center;

@@ -1,0 +1,22 @@
+.addForm {
+}
+
+.addForm > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 9px;
+}
+.addForm > div > p {
+  margin-bottom: 10px;
+}
+
+.addForm > div > input {
+  border: 1px solid gray;
+  padding: 6px 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-family: "lora";
+  max-width: 100px;
+}
