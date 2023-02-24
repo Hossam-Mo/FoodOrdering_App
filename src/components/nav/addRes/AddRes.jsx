@@ -4,6 +4,12 @@ import "./addRes.css";
 
 export default function AddRes() {
   const [row, setRow] = useState("");
+  const [itemRows, setItemRows] = useState([]);
+
+  const addItem = () => {
+    setItemRows([...itemRows, itemRows.length]);
+  };
+
   return (
     <div className="addRes">
       <div className="addRes_logo">
@@ -21,18 +27,17 @@ export default function AddRes() {
           setRow(e.target.value);
         }}
       ></input>
-      <button>Add item to the row</button>
+      <button onClick={addItem}>Add item to the row</button>
 
       <div className="addRes_form">
-        <AddForm></AddForm>
-        <AddForm></AddForm>
-        <AddForm></AddForm>
-        <AddForm></AddForm>
+        {itemRows.map((item) => {
+          return <AddForm key={item} number={item}></AddForm>;
+        })}
       </div>
 
       <div className="addRes_OR">
         <div></div>
-        <p>OR</p>
+        <p>And</p>
         <div></div>
       </div>
       <button className="addRes_save">Save</button>
