@@ -59,6 +59,14 @@ export default function SignUp({ type }) {
                   console.log(err);
                 });
 
+              setDoc(doc(db, "restaurants", res.user.uid), {
+                location: type === "restaurant" ? true : false,
+                name: auth.currentUser.displayName,
+                logo: auth.currentUser.photoURL,
+              }).catch((err) => {
+                console.log(err);
+              });
+
               dispatch({
                 type: get_user.type,
                 user: {

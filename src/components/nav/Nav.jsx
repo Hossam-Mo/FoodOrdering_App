@@ -25,15 +25,6 @@ export default function Nav() {
   const addToTheMenu = () => {
     console.log("click");
     setOpen(true);
-    /*  setDoc(doc(db, "restaurant", user?.uid, "Menu", "userCalac"), {
-      test: true,
-    })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      }); */
   };
 
   const userSignOut = () => {
