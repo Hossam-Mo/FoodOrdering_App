@@ -1,17 +1,18 @@
-import { doc, setDoc } from "firebase/firestore";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { auth, db } from "../../../firebase";
 import AddForm from "../../addForm/AddForm";
 import "./addRes.css";
 
-export default function AddRes() {
+export default function AddRes({ setModelOpen }) {
   const [row, setRow] = useState("");
   const [itemRows, setItemRows] = useState([]);
+  const [warning, setWarning] = useState(false);
   const user = useSelector((state) => state.getUser);
 
   const addItem = () => {
-    setItemRows([...itemRows, { name: "", price: "", calories: "" }]);
+    setItemRows([...itemRows, { name: "", price: "", calories: "", img: "" }]);
   };
   const handleFromChange = (e, ind, property) => {
     const arr = itemRows.slice();
@@ -24,27 +25,53 @@ export default function AddRes() {
   }, [itemRows]);
 
   const saveItem = () => {
-    setDoc(doc(db, "restaurants", user?.uid), {
-      location: true,
-      name: auth.currentUser.displayName,
-      logo: auth.currentUser.photoURL,
-    })
-      .then((res) => {
-        console.log(res);
+    if (row !== "") {
+      /* setDoc(doc(db, "restaurants", user?.uid), {
+        location: true,
+        name: auth.currentUser.displayName,
+        logo: auth.currentUser.photoURL,
       })
-      .catch((err) => {
-        console.log(err);
-      });
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        }); */
 
-    setDoc(doc(db, "restaurants", user?.uid, "Menu", row), {
-      test: true,
-    })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      if (itemRows.length === 0) {
+        setDoc(doc(db, "restaurants", user?.uid, "Menu", row), {
+          name: row,
+        })
+          .then((res) => {
+            console.log(res);
+            setModelOpen(false);
+          })
+          .catch((err) => {
+            alert(err);
+          });
+      } else {
+        itemRows.forEach((item) => {
+          addDoc(
+            collection(db, "restaurants", user?.uid, "Menu", row, "items"),
+            {
+              name: item.name,
+              price: item.price,
+              calories: item.calories,
+              img: item.img,
+            }
+          )
+            .then((res) => {
+              console.log(res);
+              setModelOpen(false);
+            })
+            .catch((err) => {
+              alert(err);
+            });
+        });
+      }
+    } else {
+      setWarning(true);
+    }
   };
 
   return (
@@ -57,6 +84,7 @@ export default function AddRes() {
         </div>
       </div>
       <h1>ADD Rows</h1>
+
       <input
         placeholder="Name"
         value={row}
@@ -64,6 +92,8 @@ export default function AddRes() {
           setRow(e.target.value);
         }}
       ></input>
+      {warning && <p className="addRes_warning">Row name cannot be empty</p>}
+
       <button onClick={addItem}>Add item to the row</button>
 
       <div className="addRes_form">
@@ -84,7 +114,9 @@ export default function AddRes() {
         <p>And</p>
         <div></div>
       </div>
-      <button className="addRes_save">Save</button>
+      <button onClick={saveItem} className="addRes_save">
+        Save
+      </button>
     </div>
   );
 }

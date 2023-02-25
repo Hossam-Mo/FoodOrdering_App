@@ -97,3 +97,8 @@
 .addRes_save {
   background-color: #ef6c15 !important;
 }
+
+.addRes_warning {
+  color: red;
+  margin-bottom: 10px;
+}

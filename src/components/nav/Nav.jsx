@@ -39,7 +39,7 @@ export default function Nav() {
   return (
     <nav className="nav">
       <Model open={open} setOpen={setOpen}>
-        <AddRes />
+        <AddRes setModelOpen={setOpen} />
       </Model>
       <div className="nav_logo">
         <img src="/assets/logo.png" alt="Logo"></img>
