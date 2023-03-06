@@ -17,10 +17,11 @@ export default function LandPage() {
           The Fastest Delivery in <span> Your City</span>
         </h1>
         <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima velit
-          eaque fugit distinctio est nam voluptatum architecto, porro iusto
-          deserunt recusandae ipsa minus eos sunt, dolores illo repellat facere
-          suscipit!
+          Experience the convenience of online food ordering with our
+          easy-to-use website. Browse menus from top-rated restaurants in your
+          area, customize your order to your liking, and pay online with ease.
+          With real-time order tracking and speedy delivery, you can sit back
+          and relax while we bring your favorite food right to your doorstep
         </p>
         <button>Order now</button>
       </div>
