@@ -76,7 +76,7 @@ export default function CartBody({ list }) {
           <p>Total</p>
           <p>326 JD</p>
         </div>
-        <button>Cheak Out</button>
+        <button>Check Out</button>
       </div>
     </div>
   );

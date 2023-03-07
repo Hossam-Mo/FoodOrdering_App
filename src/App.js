@@ -75,3 +75,17 @@ function App() {
 }
 
 export default App;
+
+/*
+1-add the menu to the sign in resturanrt
+2-I need to make the resturantes add, edit, delete, on their menu
+3-fix the menu bug that the menu dosen't show to the user 
+4-add a check out page
+5-add an order page... 1-when the user check out the order it get added in the restaurant orders page
+                       2-create the restaurant orders page
+                       3-when the user check out the order he get send to a page that have a map point of his location and the resturant location
+                          and a chat to the resturant get added to his chat page
+                       4-create a chat page btween restaurants and their clients
+6-notification seystem to the restaurants when they get an order 
+7-make the website responsive to the phones
+*/

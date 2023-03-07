@@ -21,6 +21,7 @@ export default function Menu() {
   }, [list]);
 
   useEffect(() => {
+    console.log(restaurant);
     if (restaurant && user?.type !== "restaurant") {
       setList([]);
 
@@ -63,7 +64,7 @@ export default function Menu() {
     // get the calac that the restaurannt have
     if (user?.type === "restaurant") {
     }
-  }, [restaurant]);
+  }, [restaurant, user]);
 
   return (
     <div className="menu">

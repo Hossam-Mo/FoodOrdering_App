@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { get_restaurantsList } from "../../redux/actionTypes";
 import { useEffect } from "react";
 import { db } from "../../firebase";
-import { collection, getDocs, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 
 export default function Restaurants() {
   const [restaurantsList, setRestaurantsList] = useState([
