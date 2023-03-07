@@ -37,9 +37,18 @@ export default function AddRes({ setModelOpen }) {
         .catch((err) => {
           console.log(err);
         }); */
-      setDoc(doc(db, "restaurants", user?.uid, "Menu", row), {
-        name: row,
-      })
+      setDoc(
+        doc(
+          db,
+          "restaurants",
+          user?.uid,
+          "Menu",
+          row.charAt(0).toUpperCase() + row.slice(1)
+        ),
+        {
+          name: row,
+        }
+      )
         .then((res) => {
           console.log(res);
           setModelOpen(false);
@@ -52,12 +61,19 @@ export default function AddRes({ setModelOpen }) {
       } else {
         itemRows.forEach((item) => {
           addDoc(
-            collection(db, "restaurants", user?.uid, "Menu", row, "items"),
+            collection(
+              db,
+              "restaurants",
+              user?.uid,
+              "Menu",
+              row.charAt(0).toUpperCase() + row.slice(1),
+              "items"
+            ),
             {
               name: item.name,
               price: item.price,
               calories: item.calories,
-              img: item.img,
+              img: item.img || "/assets/restaurantAvatar.png",
             }
           )
             .then((res) => {
