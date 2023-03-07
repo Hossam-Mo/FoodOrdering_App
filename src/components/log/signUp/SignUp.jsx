@@ -71,7 +71,8 @@ export default function SignUp({ type }) {
                 type: get_user.type,
                 user: {
                   name: auth.currentUser.displayName,
-                  photoURL: auth.currentUser.photoURL,
+                  photoURL:
+                    auth.currentUser.photoURL || "/assets/restaurantAvatar.png",
                   email: auth.currentUser.email,
                   phoneNumber: auth.currentUser.phoneNumber,
                   uid: auth.currentUser.uid,
