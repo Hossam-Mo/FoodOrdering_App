@@ -77,9 +77,9 @@ function App() {
 export default App;
 
 /*
-1-add the menu to the sign in resturanrt
-2-I need to make the resturantes add, edit, delete, on their menu  **** done
-3-fix the menu bug that the menu dosen't show to the user 
+1-add the menu to the sign in resturanrt **** done
+2-fix the menu bug that the menu dosen't show to the user **** done
+3-I need to make the resturantes add, edit, delete, on their menu  
 4-add a check out page
 5-add an order page... 1-when the user check out the order it get added in the restaurant orders page
                        2-create the restaurant orders page
@@ -88,4 +88,7 @@ export default App;
                        4-create a chat page btween restaurants and their clients
 6-notification seystem to the restaurants when they get an order 
 7-make the website responsive to the phones
+
+optional
+8- create a path finding algorithm with grid based map 
 */
