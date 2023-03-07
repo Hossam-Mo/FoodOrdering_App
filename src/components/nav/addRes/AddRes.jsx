@@ -37,18 +37,18 @@ export default function AddRes({ setModelOpen }) {
         .catch((err) => {
           console.log(err);
         }); */
-
-      if (itemRows.length === 0) {
-        setDoc(doc(db, "restaurants", user?.uid, "Menu", row), {
-          name: row,
+      setDoc(doc(db, "restaurants", user?.uid, "Menu", row), {
+        name: row,
+      })
+        .then((res) => {
+          console.log(res);
+          setModelOpen(false);
         })
-          .then((res) => {
-            console.log(res);
-            setModelOpen(false);
-          })
-          .catch((err) => {
-            alert(err);
-          });
+        .catch((err) => {
+          alert(err);
+        });
+      if (itemRows.length === 0) {
+        setWarning("Row needs to have at least 1 item");
       } else {
         itemRows.forEach((item) => {
           addDoc(
@@ -70,7 +70,7 @@ export default function AddRes({ setModelOpen }) {
         });
       }
     } else {
-      setWarning(true);
+      setWarning("Row name cannot be empty");
     }
   };
 
@@ -92,7 +92,7 @@ export default function AddRes({ setModelOpen }) {
           setRow(e.target.value);
         }}
       ></input>
-      {warning && <p className="addRes_warning">Row name cannot be empty</p>}
+      {warning && <p className="addRes_warning">{warning}</p>}
 
       <button onClick={addItem}>Add item to the row</button>
 
