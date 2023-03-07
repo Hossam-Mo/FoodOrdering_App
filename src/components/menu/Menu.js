@@ -22,9 +22,9 @@ export default function Menu() {
 
   useEffect(() => {
     console.log(restaurant);
+
     if (restaurant && user?.type !== "restaurant") {
       setList([]);
-
       const resLists = collection(db, "restaurants", restaurant.id, "Menu");
       getDocs(resLists)
         .then((res) => {
@@ -63,6 +63,43 @@ export default function Menu() {
     }
     // get the calac that the restaurannt have
     if (user?.type === "restaurant") {
+      setList([]);
+
+      const resLists = collection(db, "restaurants", user.uid, "Menu");
+      getDocs(resLists)
+        .then((res) => {
+          res.docs.forEach((collec) => {
+            getDocs(
+              collection(
+                db,
+                "restaurants",
+                user.uid,
+                "Menu",
+                collec.id,
+                "items"
+              )
+            )
+              .then((res) => {
+                res.docs.forEach((doc) => {
+                  setList((oldState) => {
+                    return [
+                      ...oldState,
+                      {
+                        collection: collec.id,
+                        list: [{ ...doc.data(), id: doc.id }],
+                      },
+                    ];
+                  });
+                });
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }, [restaurant, user]);
 

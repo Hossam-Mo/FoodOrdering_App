@@ -78,7 +78,7 @@ export default App;
 
 /*
 1-add the menu to the sign in resturanrt
-2-I need to make the resturantes add, edit, delete, on their menu
+2-I need to make the resturantes add, edit, delete, on their menu  **** done
 3-fix the menu bug that the menu dosen't show to the user 
 4-add a check out page
 5-add an order page... 1-when the user check out the order it get added in the restaurant orders page

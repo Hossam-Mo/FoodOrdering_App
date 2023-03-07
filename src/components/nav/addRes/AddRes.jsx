@@ -37,28 +37,29 @@ export default function AddRes({ setModelOpen }) {
         .catch((err) => {
           console.log(err);
         }); */
-      setDoc(
-        doc(
-          db,
-          "restaurants",
-          user?.uid,
-          "Menu",
-          row.charAt(0).toUpperCase() + row.slice(1)
-        ),
-        {
-          name: row,
-        }
-      )
-        .then((res) => {
-          console.log(res);
-          setModelOpen(false);
-        })
-        .catch((err) => {
-          alert(err);
-        });
+
       if (itemRows.length === 0) {
         setWarning("Row needs to have at least 1 item");
       } else {
+        setDoc(
+          doc(
+            db,
+            "restaurants",
+            user?.uid,
+            "Menu",
+            row.charAt(0).toUpperCase() + row.slice(1)
+          ),
+          {
+            name: row,
+          }
+        )
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            alert(err);
+          });
+
         itemRows.forEach((item) => {
           addDoc(
             collection(
