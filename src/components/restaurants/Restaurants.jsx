@@ -101,7 +101,7 @@ export default function Restaurants() {
           return (
             <img
               key={ind}
-              src={rest.logo}
+              src={rest.logo || "/assets/restaurantAvatar.png"}
               alt={rest.name}
               onClick={() => {
                 ShowList(rest);
