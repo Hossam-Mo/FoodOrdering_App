@@ -124,7 +124,12 @@ export default function Menu() {
       )}
       {list?.map((row, ind) => {
         return (
-          <MenuRow key={ind} title={row.collection} list={row.list}></MenuRow>
+          <MenuRow
+            key={ind}
+            title={row.collection}
+            list={row.list}
+            user={user}
+          ></MenuRow>
         );
       })}
     </div>

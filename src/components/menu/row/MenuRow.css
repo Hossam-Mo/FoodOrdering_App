@@ -31,7 +31,12 @@
   color: #f5f3f3;
   font-size: 19px;
 }
-
+.menuRow_addButton {
+  background-color: rgb(81, 128, 0) !important;
+}
+.menuRow_deleteButton {
+  background-color: rgb(195, 39, 0) !important;
+}
 .menuRow_cards {
   display: flex;
   align-items: center;

@@ -36,6 +36,10 @@
   flex-direction: column;
   height: 67%;
 }
+.foodCard_buttonsForm {
+  display: flex;
+  gap: 8px;
+}
 
 .foodCard_button {
   display: flex;
