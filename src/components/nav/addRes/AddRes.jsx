@@ -16,7 +16,8 @@ export default function AddRes({ setModelOpen }) {
   };
   const handleFromChange = (e, ind, property) => {
     const arr = itemRows.slice();
-    arr[ind][property] = e.target.value;
+    if (property === "img") arr[ind][property] = e;
+    if (property !== "img") arr[ind][property] = e.target.value;
     setItemRows(arr);
   };
 

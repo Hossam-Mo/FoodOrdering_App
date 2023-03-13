@@ -79,17 +79,18 @@ export default App;
 /*
 1-add the menu to the sign in resturanrt **** done
 2-fix the menu bug that the menu dosen't show to the user **** done
-3-I need to make the resturantes add, edit, delete, on their menu  
-4-fix the bug of double rows
-5-add a check out page
-6-add an order page... 1-when the user check out the order it get added in the restaurant orders page
+3-add an image uploader
+4-I need to make the resturantes add, edit, delete, on their menu  
+5-fix the bug of double rows
+6-add a check out page
+7-add an order page... 1-when the user check out the order it get added in the restaurant orders page
                        2-create the restaurant orders page
                        3-when the user check out the order he get send to a page that have a map point of his location and the resturant location
                           and a chat to the resturant get added to his chat page
                        4-create a chat page btween restaurants and their clients
-7-notification seystem to the restaurants when they get an order 
-8-make the website responsive to the phones
+8-notification seystem to the restaurants when they get an order 
+9-make the website responsive to the phones
 
 optional
-9- create a path finding algorithm with grid based map 
+10- create a path finding algorithm with grid based map 
 */

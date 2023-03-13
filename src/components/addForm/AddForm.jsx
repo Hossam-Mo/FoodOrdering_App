@@ -1,4 +1,5 @@
 import React from "react";
+import ImageUploader from "../imageUploader/ImageUploader";
 import "./addForm.css";
 
 export default function AddForm({ number, handleChange, item }) {
@@ -29,6 +30,11 @@ export default function AddForm({ number, handleChange, item }) {
             handleChange(e, number, "price");
           }}
         ></input>
+        <ImageUploader
+          imgUrl={item.img}
+          handleChange={handleChange}
+          number={number}
+        ></ImageUploader>
       </div>
     </div>
   );

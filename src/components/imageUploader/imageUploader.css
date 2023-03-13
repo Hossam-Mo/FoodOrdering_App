@@ -1,0 +1,37 @@
+.ImageUploader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+input[type="file"] {
+  display: none;
+}
+
+.ImageUploader_fileUpload {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.ImageUploader_fileUpload:hover {
+  background-color: #0062cc;
+}
+
+.ImageUploader_progressBarContainer {
+  width: 100%;
+  height: 1.5rem;
+  background-color: #f5f5f5;
+  border-radius: 0.25rem;
+  margin-top: 1rem;
+  padding: 0.25rem;
+}
+.ImageUploader_progress-bar {
+  height: 100%;
+  background-color: #007bff;
+  border-radius: 0.25rem;
+}
