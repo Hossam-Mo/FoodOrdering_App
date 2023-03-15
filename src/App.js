@@ -79,7 +79,7 @@ export default App;
 /*
 1-add the menu to the sign in resturanrt **** done
 2-fix the menu bug that the menu dosen't show to the user **** done
-3-add an image uploader
+3-add an image uploader **** done
 4-I need to make the resturantes add, edit, delete, on their menu  
 5-fix the bug of double rows
 6-add a check out page
