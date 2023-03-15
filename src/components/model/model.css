@@ -4,17 +4,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 999;
+  z-index: 1000000;
 }
 .model_main {
   position: relative;
   background-color: white;
   width: 50vw;
   max-height: 100vh;
-  z-index: 1000000;
+  z-index: 1000001;
   border-radius: 10px;
   text-align: center;
 }

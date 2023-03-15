@@ -3,12 +3,13 @@ import "./imageUploader.css";
 import { storage } from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
-function ImageUploader({ imgUrl, handleChange, number }) {
+function ImageUploader({ uploadData = null }) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
 
   const handleFileInputChange = (e) => {
     setSelectedFile(e.target.files[0]);
+    console.log(selectedFile);
   };
 
   const handleImageUpload = () => {
@@ -29,7 +30,7 @@ function ImageUploader({ imgUrl, handleChange, number }) {
       () => {
         getDownloadURL(storageRef).then((url) => {
           console.log("File uploaded successfully!");
-          handleChange(url, number, "img");
+          if (uploadData) uploadData(url);
           setUploadProgress(0);
         });
       }
@@ -39,10 +40,9 @@ function ImageUploader({ imgUrl, handleChange, number }) {
   return (
     <div className="imageUploader">
       <label className="ImageUploader_fileUpload">
-        <span>Select file</span>
+        <span>Select an Image</span>
         <input type="file" onChange={handleFileInputChange} />
       </label>
-      <button onClick={handleImageUpload}>Upload Image</button>
       {uploadProgress > 0 && (
         <div className="ImageUploader_progressBarContainer">
           <div
@@ -51,7 +51,10 @@ function ImageUploader({ imgUrl, handleChange, number }) {
           ></div>
         </div>
       )}
-      {imgUrl && <img src={imgUrl} alt="Uploaded image" />}
+      {selectedFile && <p>{selectedFile.name}</p>}
+      <button className="imageUploadder_button" onClick={handleImageUpload}>
+        Add
+      </button>
     </div>
   );
 }

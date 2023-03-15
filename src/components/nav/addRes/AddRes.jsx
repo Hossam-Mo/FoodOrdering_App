@@ -12,7 +12,10 @@ export default function AddRes({ setModelOpen }) {
   const user = useSelector((state) => state.getUser);
 
   const addItem = () => {
-    setItemRows([...itemRows, { name: "", price: "", calories: "", img: "" }]);
+    setItemRows([
+      ...itemRows,
+      { name: "", price: "", calories: "", img: null },
+    ]);
   };
   const handleFromChange = (e, ind, property) => {
     const arr = itemRows.slice();

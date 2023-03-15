@@ -30,11 +30,6 @@ export default function AddForm({ number, handleChange, item }) {
             handleChange(e, number, "price");
           }}
         ></input>
-        <ImageUploader
-          imgUrl={item.img}
-          handleChange={handleChange}
-          number={number}
-        ></ImageUploader>
       </div>
     </div>
   );

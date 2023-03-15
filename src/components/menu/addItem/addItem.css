@@ -1,0 +1,30 @@
+.addItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 35px;
+  padding-bottom: 65px;
+  font-family: "Lora";
+  text-align: left;
+}
+.addItem > h1 {
+  font-size: 28px;
+  font-weight: 300;
+  margin-bottom: 15px;
+}
+
+.addItem > label {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  width: 85%;
+}
+
+.addItem > label > input {
+  margin-top: 5px;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}

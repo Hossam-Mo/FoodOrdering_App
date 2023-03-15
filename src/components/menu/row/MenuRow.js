@@ -1,14 +1,16 @@
-import React, { Fragment, useRef } from "react";
+import React, { Fragment, useRef, useState } from "react";
 import HedersLabels from "../../heders labels/HedersLabels";
 import "./MenuRow.css";
 import { BsArrowLeftShort, BsArrowRightShort } from "react-icons/bs";
 import { IoMdAdd } from "react-icons/io";
 import { MdDelete } from "react-icons/md";
 import FoodCard from "../foodCards/FoodCard";
-
+import Model from "../../model/Model";
+import AddItem from "../addItem/AddItem";
 export default function MenuRow({ title, list, user }) {
+  const [open, setOpen] = useState(false);
+
   const ref = useRef(null);
-  console.log(user);
 
   const scroll = (scrollOffset) => {
     ref.current.scrollLeft += scrollOffset;
@@ -16,6 +18,10 @@ export default function MenuRow({ title, list, user }) {
 
   return (
     <div className="MenuRow">
+      <Model open={open} setOpen={setOpen}>
+        <AddItem row={title} setOpen={setOpen} />
+      </Model>
+
       <div className="menuRow_title">
         <HedersLabels title={title}></HedersLabels>
         <div className="menuRow_buttons">
@@ -23,7 +29,9 @@ export default function MenuRow({ title, list, user }) {
             <Fragment>
               <button
                 className="menuRow_addButton"
-                onClick={() => scroll(-300)}
+                onClick={() => {
+                  setOpen(true);
+                }}
               >
                 <IoMdAdd />
               </button>
