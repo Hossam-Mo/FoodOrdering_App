@@ -77,6 +77,17 @@ function App() {
 export default App;
 
 /*
+Finished  ***************
+landing page with introduction to the website
+Navigation bar showing the website logo and another user clickable options
+Restaurant component to allow the user to choose a restaurant
+Navigation bar shows the website logo and other user clickable options
+Cart component that allows the user to add, delete, update, and empty the cart with a checkout button
+an authentication system that allows users to sign in to the website as a consumer or as a restaurant 
+if the user signed in as a restaurant, he can add items to his restaurant menu and upload images of every item
+
+unFinished ***************
+
 1-add the menu to the sign in resturanrt **** done
 2-fix the menu bug that the menu dosen't show to the user **** done
 3-add an image uploader **** done
